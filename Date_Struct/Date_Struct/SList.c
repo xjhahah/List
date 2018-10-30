@@ -604,7 +604,7 @@ void UnionSet(PNode pHead1, PNode pHead2)
 		}
 		else
 		{
-			printf("pHead1->_data=%d, pHead2->_data=%d", pHead1->_data,pHead2->_data);
+			printf("pHead1->_data=%d, pHead2->_data=%d \n", pHead1->_data,pHead2->_data);
 			pHead1 = pHead1->_pNext;
 			pHead2 = pHead2->_pNext;
 		}
@@ -629,6 +629,26 @@ void PrintList(PNode pHead)
 		pCur = pCur->_pNext;
 	}
 	printf("NULL\n");
+}
+
+void TestUnionSet()
+{
+	PNode pHead1 = NULL;
+	PNode pHead2 = NULL;
+
+	SListPushBack(&pHead1, 1);
+	SListPushBack(&pHead1, 2);
+	SListPushBack(&pHead1, 3);
+	SListPushBack(&pHead1, 4);
+	SListPushBack(&pHead1, 5);
+	SListPushBack(&pHead1, 6);
+
+	SListPushBack(&pHead2, 3);
+	SListPushBack(&pHead2, 4);
+	SListPushBack(&pHead2, 7);
+	SListPushBack(&pHead2, 8);
+
+	UnionSet(pHead1, pHead2);
 }
 
 #if 0

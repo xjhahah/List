@@ -65,3 +65,4 @@ void UnionSet(PNode pHead1, PNode pHead2);
 //void TestIsSListCross();
 //void TestIsListCrossWithCircle();
 //void TestComplexList();
+void TestUnionSet();

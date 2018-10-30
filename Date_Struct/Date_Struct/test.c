@@ -10,5 +10,6 @@ int main()
 	//TestIsSListCross();
 	//TestIsListCrossWithCircle();
 	//TestComplexList();
+	TestUnionSet();
 	return 0;
 }
