@@ -1,4 +1,3 @@
-
 #include "SList.h"
 int main()
 {
@@ -10,6 +9,6 @@ int main()
 	//TestIsSListCross();
 	//TestIsListCrossWithCircle();
 	//TestComplexList();
-	TestUnionSet();
+	//TestUnionSet();
 	return 0;
 }
