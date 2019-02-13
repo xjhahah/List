@@ -1,21 +1,21 @@
 #include "SList.h"
 
-//Á´±í³õÊ¼»¯
-void SListInit(PNode* pHead)  //Èç¹ûÒª¸Ä±äÍâ²¿Êµ²ÎµÄÖ¸Ïò±ØĞëÒªÓÃ¶ş¼¶Ö¸Õë
+//é“¾è¡¨åˆå§‹åŒ–
+void SListInit(PNode* pHead)  //å¦‚æœè¦æ”¹å˜å¤–éƒ¨å®å‚çš„æŒ‡å‘å¿…é¡»è¦ç”¨äºŒçº§æŒ‡é’ˆ
 {
 	assert(pHead);
 	*pHead = NULL;
 }
-//Î²²å
+//å°¾æ’
 void SListPushBack(PNode* pHead, DataType data)
 {
 	PNode pNewNode = NULL;
-	assert(pHead);  //pHeadÒ»¶¨²»»áÎª¿Õ£¬ÒòÎªpHeadÊÇÒ»¸ö¶ş¼¶Ö¸Õë
-	//Á´±íÎª¿Õ
+	assert(pHead);  //pHeadä¸€å®šä¸ä¼šä¸ºç©ºï¼Œå› ä¸ºpHeadæ˜¯ä¸€ä¸ªäºŒçº§æŒ‡é’ˆ
+	//é“¾è¡¨ä¸ºç©º
 	pNewNode = BuySListNode(data);
 	if (NULL == *pHead)
 		*pHead = pNewNode;
-	//Á´±í·Ç¿Õ
+	//é“¾è¡¨éç©º
 	else
 	{
 		PNode pCur = *pHead;
@@ -25,7 +25,7 @@ void SListPushBack(PNode* pHead, DataType data)
 	}
 }
 
-//Í·²å
+//å¤´æ’
 void SListPushFront(PNode* pHead, DataType data)
 {
 	PNode pNewNode = NULL;
@@ -37,24 +37,24 @@ void SListPushFront(PNode* pHead, DataType data)
 	*pHead = pNewNode;
 }
 
-//Î²É¾
+//å°¾åˆ 
 void SListPopBack(PNode* pHead)
 {
-	//assert ºÍ if Çø±ğ£º
-	//assertÖ»ÔÚdebug²Å»áÓĞ£¬µ±À¨ºÅÀïµÄÌõ¼ş·Ç·¨²Å»á´¥·¢£¬µ«ÊÇ if ÊÇÅĞ¶ÏÌõ¼şºÏ·¨µÄÇé¿öÏÂÀ´ÅĞ¶ÏĞèÇó
+	//assert å’Œ if åŒºåˆ«ï¼š
+	//assertåªåœ¨debugæ‰ä¼šæœ‰ï¼Œå½“æ‹¬å·é‡Œçš„æ¡ä»¶éæ³•æ‰ä¼šè§¦å‘ï¼Œä½†æ˜¯ if æ˜¯åˆ¤æ–­æ¡ä»¶åˆæ³•çš„æƒ…å†µä¸‹æ¥åˆ¤æ–­éœ€æ±‚
 	assert(pHead);
 	if (NULL == pHead)
 		return;
-	//·Ç¿Õ
+	//éç©º
 	else if (NULL == (*pHead)->_pNext)
 	{
-		//Ö»ÓĞÒ»¸ö½Úµã
+		//åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹
 		free(*pHead);
 		(*pHead) = NULL;
 	}
 	else
 	{
-		//ÓĞ¶à¸ö½Úµã
+		//æœ‰å¤šä¸ªèŠ‚ç‚¹
 		PNode pCur = *pHead;
 		while (pCur->_pNext->_pNext)
 			pCur = pCur->_pNext;
@@ -63,16 +63,16 @@ void SListPopBack(PNode* pHead)
 	}
 }
 
-//Í·É¾
+//å¤´åˆ 
 void SListPopFront(PNode* pHead)
 {
 	assert(pHead);
-	//Èç¹ûÁ´±íÀïÃæÊ²Ã´¶¼Ã»ÓĞÖ±½Ó·µ»Ø
+	//å¦‚æœé“¾è¡¨é‡Œé¢ä»€ä¹ˆéƒ½æ²¡æœ‰ç›´æ¥è¿”å›
 	if (NULL == *pHead)
 		return;
 	else
 	{
-		//¿ÉÒÔ´¦ÀíÖ»ÓĞÒ»¸ö½ÚµãºÍ¶à¸ö½Úµã
+		//å¯ä»¥å¤„ç†åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹å’Œå¤šä¸ªèŠ‚ç‚¹
 		PNode pDel = NULL;
 		pDel = *pHead;
 		*pHead = pDel->_pNext;
@@ -91,7 +91,7 @@ PNode SListFind(PNode pHead, DataType data)
 	}
 	return NULL;
 }
-//ÈÎÒâÎ»ÖÃµÄ²åÈë
+//ä»»æ„ä½ç½®çš„æ’å…¥
 void SListInsert(PNode* pHead, DataType data, PNode pos)
 {
 	PNode pNewNode = NULL;
@@ -107,7 +107,7 @@ void SListInsert(PNode* pHead, DataType data, PNode pos)
 		pos->_pNext = pNewNode;
 	}
 }
-//ÈÎÒâÎ»ÖÃµÄÉ¾³ı
+//ä»»æ„ä½ç½®çš„åˆ é™¤
 void SListErease(PNode* pHead, PNode pos)
 {
 	assert(pHead);
@@ -118,7 +118,7 @@ void SListErease(PNode* pHead, PNode pos)
 	else
 	{
 		PNode pCur = *pHead;
-		while (pCur && pCur->_pNext != pos) //¼ì²âpCurÓĞÃ»ÓĞ×ßµ½¿Õ
+		while (pCur && pCur->_pNext != pos) //æ£€æµ‹pCuræœ‰æ²¡æœ‰èµ°åˆ°ç©º
 			pCur = pCur->_pNext;
 		if (pCur)
 		{
@@ -127,12 +127,12 @@ void SListErease(PNode* pHead, PNode pos)
 		}
 	}
 }
-//Á´±íµÄÏú»Ù£¬ÀàËÆÓÚÍ·É¾¡£Èç¹ûÃ»ÓĞÕâ¸ö²Ù×÷¾Í´æÔÚÄÚ´æĞ¹Â©
+//é“¾è¡¨çš„é”€æ¯ï¼Œç±»ä¼¼äºå¤´åˆ ã€‚å¦‚æœæ²¡æœ‰è¿™ä¸ªæ“ä½œå°±å­˜åœ¨å†…å­˜æ³„æ¼
 void SListDestory(PNode* pHead)
 {
 	SListClear(pHead);
 }
-//Á´±íÖĞ½Úµã¸öÊı
+//é“¾è¡¨ä¸­èŠ‚ç‚¹ä¸ªæ•°
 int SListSize(PNode* pHead)
 {
 	int count = 0;
@@ -145,7 +145,7 @@ int SListSize(PNode* pHead)
 	}
 	return count;
 }
-//Çå¿ÕÁ´±í£¬²Ù×÷·½·¨ºÍÏú»ÙÁ´±íÏàÍ¬
+//æ¸…ç©ºé“¾è¡¨ï¼Œæ“ä½œæ–¹æ³•å’Œé”€æ¯é“¾è¡¨ç›¸åŒ
 void SListClear(PNode* pHead)
 {
 	PNode pDelNode = NULL;
@@ -157,7 +157,7 @@ void SListClear(PNode* pHead)
 		free(pDelNode);
 	}
 }
-//²éÕÒÎ²½Úµã
+//æŸ¥æ‰¾å°¾èŠ‚ç‚¹
 PNode SListBack(PNode pHead)
 {
 	PNode pCur = pHead;
@@ -167,8 +167,8 @@ PNode SListBack(PNode pHead)
 		pCur = pCur->_pNext;
 	return pCur;
 }
-///////////Á´±íÃæÊÔÌâ//////////////////////
-void PrintListFromTailToHead(PNode pHead)  //µİ¹éÊ±¼ä¸´ÔÓ¶ÈO(N) ¿Õ¼ä¸´ÔÓ¶ÈO(N)
+///////////é“¾è¡¨é¢è¯•é¢˜//////////////////////
+void PrintListFromTailToHead(PNode pHead)  //é€’å½’æ—¶é—´å¤æ‚åº¦O(N) ç©ºé—´å¤æ‚åº¦O(N)
 {
 	if (pHead)
 	{
@@ -178,8 +178,8 @@ void PrintListFromTailToHead(PNode pHead)  //µİ¹éÊ±¼ä¸´ÔÓ¶ÈO(N) ¿Õ¼ä¸´ÔÓ¶ÈO(N)
 	printf("\n");
 }
 
-//É¾³ıÎŞÍ·µ¥Á´±íµÄÒ»¸ö·ÇÎ²½Úµã£¨²»ÄÜ±éÀúÁ´±í£©
-//ÕâÀï²ÉÓÃµÄ·½·¨ÊÇÓÃpos->_pNextµÄdata¸²¸ÇposÎ»ÖÃ´¦µÄdata£¬È»ºóÉ¾µôpos->_pNextÎ»ÖÃµÄdata
+//åˆ é™¤æ— å¤´å•é“¾è¡¨çš„ä¸€ä¸ªéå°¾èŠ‚ç‚¹ï¼ˆä¸èƒ½éå†é“¾è¡¨ï¼‰
+//è¿™é‡Œé‡‡ç”¨çš„æ–¹æ³•æ˜¯ç”¨pos->_pNextçš„dataè¦†ç›–posä½ç½®å¤„çš„dataï¼Œç„¶ååˆ æ‰pos->_pNextä½ç½®çš„data
 void DeleteNotTailNode(PNode pos)
 {
 	PNode pDelNode = NULL;
@@ -190,7 +190,7 @@ void DeleteNotTailNode(PNode pos)
 	pos->_pNext = pDelNode->_pNext;
 	free(pDelNode);
 }
-//ÔÚÎŞÍ·µ¥Á´±íµÄÒ»¸ö½ÚµãÇ°²åÈëÒ»¸ö½Úµã£¨²»ÄÜ±éÀúÁ´±í£©
+//åœ¨æ— å¤´å•é“¾è¡¨çš„ä¸€ä¸ªèŠ‚ç‚¹å‰æ’å…¥ä¸€ä¸ªèŠ‚ç‚¹ï¼ˆä¸èƒ½éå†é“¾è¡¨ï¼‰
 void InsertPosFront(PNode pos, DataType data)
 {
 	PNode pNewNode = NULL;
@@ -201,7 +201,7 @@ void InsertPosFront(PNode pos, DataType data)
 	pos->_pNext = pNewNode;
 	pos->_data = data;
 }
-//µ¥Á´±íÊµÏÖÔ¼Éª·ò»·
+//å•é“¾è¡¨å®ç°çº¦ç‘Ÿå¤«ç¯
 PNode JosephCircle(PNode* pHead, const int M)
 {
 	PNode pCur = NULL;
@@ -210,23 +210,23 @@ PNode JosephCircle(PNode* pHead, const int M)
 	if (NULL == *pHead)
 		return NULL;
 	pCur = *pHead;
-	//±¨Êı
+	//æŠ¥æ•°
 	while (pCur->_pNext != pCur)
 	{
 		int count = M;
 		while (--count)
 		{
-			pCur = pCur->_pNext;//¹¹»·
+			pCur = pCur->_pNext;//æ„ç¯
 		}
-		//É¾½Úµã,Ìæ»»·¨É¾³ı	
+		//åˆ èŠ‚ç‚¹,æ›¿æ¢æ³•åˆ é™¤	
 		pDelNode = pCur->_pNext;
 		pCur->_data = pDelNode->_data;
 		pCur->_pNext = pDelNode->_pNext;
 	}
-	*pHead = pCur;  //×îºó¿ÉÄÜ°ÑµÚÒ»¸ö½ÚµãÉ¾³ıÁË
+	*pHead = pCur;  //æœ€åå¯èƒ½æŠŠç¬¬ä¸€ä¸ªèŠ‚ç‚¹åˆ é™¤äº†
 	return *pHead;
 }
-//Ã°ÅİÅÅĞò
+//å†’æ³¡æ’åº
 void SListBubbleSort(PNode pHead)
 {
 	PNode pPre = NULL;
@@ -257,7 +257,7 @@ void SListBubbleSort(PNode pHead)
 		pTail = pPre;
 	}
 }
-//µ¥Á´±íµÄÄæÖÃ,ÕâÀï²ÉÓÃÈı¸öÖ¸Õë
+//å•é“¾è¡¨çš„é€†ç½®,è¿™é‡Œé‡‡ç”¨ä¸‰ä¸ªæŒ‡é’ˆ
 void ReverseSList(PNode* pHead)
 {
 	PNode pPre = NULL;
@@ -276,7 +276,7 @@ void ReverseSList(PNode* pHead)
 	}
 	*pHead = pPre;
 }
-//·¨¶ş,.Í·²å·¨£¬½â¾ö²»ÁËÁ´±í´ø»·ÎÊÌâ£¿¿ÉÒÔ¿¼ÂÇÏÈ½«»·¶Ï¿ªÈ»ºóÄæĞò×îºóÔÚÁ¬½ÓÆğÀ´
+//æ³•äºŒ,.å¤´æ’æ³•ï¼Œè§£å†³ä¸äº†é“¾è¡¨å¸¦ç¯é—®é¢˜ï¼Ÿå¯ä»¥è€ƒè™‘å…ˆå°†ç¯æ–­å¼€ç„¶åé€†åºæœ€ååœ¨è¿æ¥èµ·æ¥
 PNode ReverseSListOP(PNode pHead)
 {
 	PNode pNewHead = NULL;
@@ -295,25 +295,25 @@ PNode ReverseSListOP(PNode pHead)
 	return pNewHead;
 }
 
-//ºÏ²¢Á½¸öÓĞĞòÁ´±í£¬ºÏ²¢Ö®ºóÒÀÈ»ÓĞĞò
+//åˆå¹¶ä¸¤ä¸ªæœ‰åºé“¾è¡¨ï¼Œåˆå¹¶ä¹‹åä¾ç„¶æœ‰åº
 PNode MergeSList(PNode pHead1, PNode pHead2)
 {
 	PNode pNewHead = NULL;
 	PNode pTailNode = NULL;
 	PNode pL1 = pHead1;
 	PNode pL2 = pHead2;
-	//·¨Ò»
+	//æ³•ä¸€
 	if (NULL == pHead1)
 		return pHead2;
 	if (NULL == pHead2)
 		return pHead1;
 	if (NULL == pHead1 && NULL == pHead2)
 		return pHead1;
-	//·¨¶ş
+	//æ³•äºŒ
 	/*if (NULL == pHead1 || NULL == pHead2)
 		return pHead1 ? pHead2 : pHead1;*/
 
-		//Á½¸öÁ´±í¶¼²»Îª¿Õ
+		//ä¸¤ä¸ªé“¾è¡¨éƒ½ä¸ä¸ºç©º
 	if (pL1->_data < pL2->_data)
 	{
 		pNewHead = pL1;
@@ -349,8 +349,8 @@ PNode MergeSList(PNode pHead1, PNode pHead2)
 	}
 	return pNewHead;
 }
-//²éÕÒÁ´±íµÄÖĞ¼ä½áµã£¬ÒªÇóÖ»ÄÜ±éÀúÒ»´Î
-//Ë¼Â·£º¿ìÂıÖ¸Õë
+//æŸ¥æ‰¾é“¾è¡¨çš„ä¸­é—´ç»“ç‚¹ï¼Œè¦æ±‚åªèƒ½éå†ä¸€æ¬¡
+//æ€è·¯ï¼šå¿«æ…¢æŒ‡é’ˆ
 PNode FindMidNode(PNode pHead)
 {
 	PNode pSlow = NULL;
@@ -359,7 +359,7 @@ PNode FindMidNode(PNode pHead)
 		return NULL;
 	pSlow = pHead;
 	pFast = pHead;
-	while (pFast && pFast->_pNext)   //pFast×ßµÃ¿ì£¬¿ÉÒÔÖ»ÓÃÕâ¸öÖ¸ÕëÀ´×÷ÎªÑ­»·Ìõ¼ş
+	while (pFast && pFast->_pNext)   //pFastèµ°å¾—å¿«ï¼Œå¯ä»¥åªç”¨è¿™ä¸ªæŒ‡é’ˆæ¥ä½œä¸ºå¾ªç¯æ¡ä»¶
 	{
 		pFast = pFast->_pNext->_pNext;
 		pSlow = pSlow->_pNext;
@@ -367,22 +367,22 @@ PNode FindMidNode(PNode pHead)
 	return pSlow;
 }
 
-//²éÕÒÁ´±íµ¹ÊıµÄµÚK¸ö½Úµã£¬ÒªÇóÖ»ÄÜ±éÀúÒ»´ÎÁ´±í
+//æŸ¥æ‰¾é“¾è¡¨å€’æ•°çš„ç¬¬Kä¸ªèŠ‚ç‚¹ï¼Œè¦æ±‚åªèƒ½éå†ä¸€æ¬¡é“¾è¡¨
 PNode FindLastKNode(PNode pHead, int K)
 {
 	PNode pFast = pHead;
 	PNode pSlow = pHead;
 	if (NULL == pHead || K <= 0)
 		return NULL;
-	//ÏÈÈÃpFast×ßK²½£¬
+	//å…ˆè®©pFastèµ°Kæ­¥ï¼Œ
 	while (K--)
 	{
-		//Ê×ÏÈ±£Ö¤pFast²»Îª¿Õ
+		//é¦–å…ˆä¿è¯pFastä¸ä¸ºç©º
 		if (pFast)
 			return NULL;
 		pFast = pFast->_pNext;
 	}
-	//È»ºó¿ìÂıÖ¸ÕëÒ»Æğ×ß
+	//ç„¶åå¿«æ…¢æŒ‡é’ˆä¸€èµ·èµ°
 	while (pFast)
 	{
 		pFast = pFast->_pNext;
@@ -390,35 +390,35 @@ PNode FindLastKNode(PNode pHead, int K)
 	}
 	return pSlow;
 }
-//ÅĞ¶ÏÁ½¸öÎŞ»·µ¥Á´±íÊÇ·ñÏà½»
+//åˆ¤æ–­ä¸¤ä¸ªæ— ç¯å•é“¾è¡¨æ˜¯å¦ç›¸äº¤
 int IsCrossWithoutCircle(PNode pHead1, PNode pHead2)
 {
 	PNode pTail1 = pHead1;
 	PNode pTail2 = pHead2;
 	if (NULL == pHead1 || NULL == pHead2)
 		return 0;
-	//ÕÒµÚÒ»¸öÁ´±íµÄÎ²½Úµã
+	//æ‰¾ç¬¬ä¸€ä¸ªé“¾è¡¨çš„å°¾èŠ‚ç‚¹
 	while (pTail1->_pNext)
 	{
 		pTail1 = pTail1->_pNext;
 	}
-	//ÕÒµÚ¶ş¸öÁ´±íµÄÎ²½Úµã
+	//æ‰¾ç¬¬äºŒä¸ªé“¾è¡¨çš„å°¾èŠ‚ç‚¹
 	while (pTail2->_pNext)
 	{
 		pTail2 = pTail2->_pNext;
 	}
 	return pTail1 == pTail2;
 }
-//ÅĞ¶ÏÁ½¸öÎŞ»·µ¥Á´±íÊÇ·ñÏà½»,ÈôÏà½»£¬Çó½»µã
+//åˆ¤æ–­ä¸¤ä¸ªæ— ç¯å•é“¾è¡¨æ˜¯å¦ç›¸äº¤,è‹¥ç›¸äº¤ï¼Œæ±‚äº¤ç‚¹
 PNode GetCrossNode(PNode pHead1, PNode pHead2)
 {
 	int size1 = 0, size2 = 0;
 	int gap = 0;
 	PNode pCur1 = pHead1;
 	PNode pCur2 = pHead2;
-	if (!(IsCrossWithoutCircle(pHead1, pHead2))) //Èç¹û²»Ïà½»
+	if (!(IsCrossWithoutCircle(pHead1, pHead2))) //å¦‚æœä¸ç›¸äº¤
 		return NULL;
-	//ÇóÁ½¸öÁ´±íÖĞ½Úµã¸öÊı
+	//æ±‚ä¸¤ä¸ªé“¾è¡¨ä¸­èŠ‚ç‚¹ä¸ªæ•°
 	while (pCur1)
 	{
 		size1++;
@@ -446,18 +446,19 @@ PNode GetCrossNode(PNode pHead1, PNode pHead2)
 			pCur2 = pCur2->_pNext;
 		}
 	}
-	else
+	if(pCur1 == pCur2)
+		return pCur1;
+	while (pCur1 != pCur2)
 	{
-		while (pCur1 != pCur2)
-		{
-			pCur1 = pCur1->_pNext;
-			pCur2 = pCur2->_pNext;
-		}
+		pCur1 = pCur1->_pNext;
+		pCur2 = pCur2->_pNext;
+		if(pCur1 == pCur2)
+			break;
 	}
 	return pCur1;
 }
 
-//ÅĞ¶ÏÁ´±íÊÇ·ñ´ø»·?Èô´ø»·£¬Çó»·µÄ³¤¶È
+//åˆ¤æ–­é“¾è¡¨æ˜¯å¦å¸¦ç¯?è‹¥å¸¦ç¯ï¼Œæ±‚ç¯çš„é•¿åº¦
 PNode IsCircle(PNode pHead)
 {
 	PNode pFast = pHead;
@@ -467,9 +468,9 @@ PNode IsCircle(PNode pHead)
 		pFast = pFast->_pNext->_pNext;
 		pSlow = pSlow->_pNext;
 		if (pFast == pSlow)
-			return pSlow;    //Ò»¶¨´ø»·
+			return pSlow;    //ä¸€å®šå¸¦ç¯
 	}
-	return NULL;   //Ò»¶¨²»´ø»·
+	return NULL;   //ä¸€å®šä¸å¸¦ç¯
 }
 int GetCircleLen(PNode pHead)
 {
@@ -485,7 +486,7 @@ int GetCircleLen(PNode pHead)
 	}
 	return count;
 }
-//´ø»·£¿Çó»·µÄÈë¿Úµã£¬¸ù¾İÅĞ»··½Ê½µÃ³ö¼ÆËã¹«Ê½ £¬Ö¤Ã÷£¿£¿£¿
+//å¸¦ç¯ï¼Ÿæ±‚ç¯çš„å…¥å£ç‚¹ï¼Œæ ¹æ®åˆ¤ç¯æ–¹å¼å¾—å‡ºè®¡ç®—å…¬å¼ ï¼Œè¯æ˜ï¼Ÿï¼Ÿï¼Ÿ
 PNode GetEnterNode(PNode pHead, PNode pMeetNode)
 {
 	PNode pH = pHead;
@@ -499,14 +500,14 @@ PNode GetEnterNode(PNode pHead, PNode pMeetNode)
 	}
 	return pH;
 }
-//ÅĞ¶ÏÁ½¸öÁ´±íÊÇ·ñÏà½»£¿ÈôÏà½»£¬Çó½»µã£¬Á´±í¿ÉÄÜ´ø»·
-//Ò»¸ö´ø»·£¬Ò»¸ö²»´ø»·¿Ï¶¨²»»áÏà½»
+//åˆ¤æ–­ä¸¤ä¸ªé“¾è¡¨æ˜¯å¦ç›¸äº¤ï¼Ÿè‹¥ç›¸äº¤ï¼Œæ±‚äº¤ç‚¹ï¼Œé“¾è¡¨å¯èƒ½å¸¦ç¯
+//ä¸€ä¸ªå¸¦ç¯ï¼Œä¸€ä¸ªä¸å¸¦ç¯è‚¯å®šä¸ä¼šç›¸äº¤
 int IsListCrossWithCircle(PNode pHead1, PNode pHead2)
 {
 	PNode pMeetNode1 = IsCircle(pHead1);
 	PNode pMeetNode2 = IsCircle(pHead2);
 
-	//Èç¹ûÁ½¸öÁ´±í¶¼²»´ø»·,ÕÒÁ½¸öÁ´±íµÄ×îºóÒ»¸ö½Úµã£¬²¢¼ì²â½ÚµãÊÇ·ñÏàµÈ
+	//å¦‚æœä¸¤ä¸ªé“¾è¡¨éƒ½ä¸å¸¦ç¯,æ‰¾ä¸¤ä¸ªé“¾è¡¨çš„æœ€åä¸€ä¸ªèŠ‚ç‚¹ï¼Œå¹¶æ£€æµ‹èŠ‚ç‚¹æ˜¯å¦ç›¸ç­‰
 	if (NULL == pMeetNode1 && NULL == pMeetNode2)
 	{
 		PNode pTail = NULL;
@@ -528,7 +529,7 @@ int IsListCrossWithCircle(PNode pHead1, PNode pHead2)
 			return 1;
 		}
 	}
-	//Èç¹ûÁ½¸öÁ´±í¶¼´ø»·
+	//å¦‚æœä¸¤ä¸ªé“¾è¡¨éƒ½å¸¦ç¯
 	else if (pMeetNode1 && pMeetNode2)
 	{
 		PNode pCur = pMeetNode1;
@@ -541,10 +542,10 @@ int IsListCrossWithCircle(PNode pHead1, PNode pHead2)
 	}
 	return 0;
 }
-//¸´ÔÓÁ´±íµÄ¸´ÖÆ
-//Ë¼Â·£º 1¡¢ÔÚÔ­Á´±íÃ¿¸ö½ÚµãºóÃæ²åÈëÖµÏàÍ¬µÄ½Úµã
-//       2¡¢¸øĞÂ²åÈë½ÚµãµÄËæ»úÖ¸ÕëÓò¸³Öµ
-//       3¡¢½«²åÈëµÄĞÂ½Úµã´ÓÁ´±íÖĞ²ğÏÂÀ´
+//å¤æ‚é“¾è¡¨çš„å¤åˆ¶
+//æ€è·¯ï¼š 1ã€åœ¨åŸé“¾è¡¨æ¯ä¸ªèŠ‚ç‚¹åé¢æ’å…¥å€¼ç›¸åŒçš„èŠ‚ç‚¹
+//       2ã€ç»™æ–°æ’å…¥èŠ‚ç‚¹çš„éšæœºæŒ‡é’ˆåŸŸèµ‹å€¼
+//       3ã€å°†æ’å…¥çš„æ–°èŠ‚ç‚¹ä»é“¾è¡¨ä¸­æ‹†ä¸‹æ¥
 PComplexNode CopyComplexList(PComplexNode pHead)
 {
 	PComplexNode pOldNode = pHead;
@@ -552,7 +553,7 @@ PComplexNode CopyComplexList(PComplexNode pHead)
 	PComplexNode pNewHead = NULL;
 	if (NULL == pHead)
 		return NULL;
-	// 1¡¢ÔÚÔ­Á´±íÃ¿¸ö½ÚµãºóÃæ²åÈëÖµÏàÍ¬µÄ½Úµã
+	// 1ã€åœ¨åŸé“¾è¡¨æ¯ä¸ªèŠ‚ç‚¹åé¢æ’å…¥å€¼ç›¸åŒçš„èŠ‚ç‚¹
 	while(pOldNode)
 	{
 		pNewNode = (PComplexNode)malloc(sizeof(ComplexNode));
@@ -566,7 +567,7 @@ PComplexNode CopyComplexList(PComplexNode pHead)
 		pOldNode->_pNext = pNewNode;
 		pOldNode = pNewNode->_pNext;
 	}
-	// 2¡¢¸øĞÂ²åÈë½ÚµãµÄËæ»úÖ¸ÕëÓò¸³Öµ
+	// 2ã€ç»™æ–°æ’å…¥èŠ‚ç‚¹çš„éšæœºæŒ‡é’ˆåŸŸèµ‹å€¼
 	pOldNode = pHead;
 	while (pOldNode->_pNext)
 	{
@@ -577,7 +578,7 @@ PComplexNode CopyComplexList(PComplexNode pHead)
 			pNewNode->_pRandom = pOldNode->_pRandom->_pNext;
 		pOldNode = pNewNode->_pNext;
 	}
-	// 3¡¢½«²åÈëµÄĞÂ½Úµã´ÓÁ´±íÖĞ²ğÏÂÀ´
+	// 3ã€å°†æ’å…¥çš„æ–°èŠ‚ç‚¹ä»é“¾è¡¨ä¸­æ‹†ä¸‹æ¥
 	pOldNode = pHead;
 	pNewHead = pOldNode->_pNext;
 	while (pOldNode->_pNext)
@@ -589,7 +590,7 @@ PComplexNode CopyComplexList(PComplexNode pHead)
 	return pNewHead;
 }
 
-//ÇóÁ½¸öÒÑÅÅĞòµ¥Á´±íÖĞÏàÍ¬µÄÊı¾İ
+//æ±‚ä¸¤ä¸ªå·²æ’åºå•é“¾è¡¨ä¸­ç›¸åŒçš„æ•°æ®
 void UnionSet(PNode pHead1, PNode pHead2)
 {
 	while (NULL != pHead1 && NULL != pHead2)
@@ -698,16 +699,16 @@ void TestIsListCrossWithCircle()
 
 	int ret = IsListCrossWithCircle(pHead1, pHead2);
 	if (1 == ret)
-		printf("Á½¸öÁ´±í²»´ø»·Ïà½»\n");
+		printf("ä¸¤ä¸ªé“¾è¡¨ä¸å¸¦ç¯ç›¸äº¤\n");
 	else if (2 == ret)
-		printf("Á½¸öÁ´±í´ø»·Ïà½»\n");
+		printf("ä¸¤ä¸ªé“¾è¡¨å¸¦ç¯ç›¸äº¤\n");
 	else
-		printf("Á½¸öÁ´±í²»Ïà½»\n");
+		printf("ä¸¤ä¸ªé“¾è¡¨ä¸ç›¸äº¤\n");
 }
 void TestIsSListCross()
 {
-	//Ïà½»
-	//²»Ïà½»
+	//ç›¸äº¤
+	//ä¸ç›¸äº¤
 	PNode pHead1 = NULL;
 	PNode pHead2 = NULL;
 	PNode pCur;
@@ -726,17 +727,17 @@ void TestIsSListCross()
 	SListPushBack(&pHead2, 0);
 	PrintList(pHead2);
 
-	SListBack(pHead1->_Next) = SListFind(pHead2->_Next, 7);  //¹¹½¨Á´±íÏà½»
+	SListBack(pHead1->_Next) = SListFind(pHead2->_Next, 7);  //æ„å»ºé“¾è¡¨ç›¸äº¤
 
 	if (IsCrossWithoutCircle(pHead1, pHead2)
 	{
-		printf("Á½¸öÁ´±íÏà½»\n");
+		printf("ä¸¤ä¸ªé“¾è¡¨ç›¸äº¤\n");
 			pCur = GetCrossNode(pHead1, pHead2);
-			printf("½»µãÎª: %d\n", pCur->_data);
+			printf("äº¤ç‚¹ä¸º: %d\n", pCur->_data);
 	}
 	else
 	{
-		printf("Á½¸öÁ´±í²»Ïà½»\n");
+		printf("ä¸¤ä¸ªé“¾è¡¨ä¸ç›¸äº¤\n");
 	}
 
 	SListDestory(pHead1);
@@ -757,7 +758,7 @@ void TestList()
 
 	//FindMidNode(pHead);
 	PNode pCur = FindMidNode(pHead);
-	printf("ÖĞ¼ä½ÚµãÊÇ£º%d\n", pCur->_data);
+	printf("ä¸­é—´èŠ‚ç‚¹æ˜¯ï¼š%d\n", pCur->_data);
 	//ReverseSList(&pHead);
 	PrintList(pHead);
 	/*
@@ -817,10 +818,10 @@ void TestJosephCircle()
 	SListPushBack(&pHead, 8);
 	PrintList(pHead);
 
-	//¹¹»·
+	//æ„ç¯
 	SListBack(pHead)->_pNext = pHead;
 	JosephCircle(&pHead, 3);
-	//½â»·
+	//è§£ç¯
 	pHead->_pNext = NULL;
 	PrintList(pHead);
 }
